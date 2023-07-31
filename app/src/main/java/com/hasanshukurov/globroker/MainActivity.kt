@@ -20,15 +20,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        
 
 
 
-    }
 
-    fun xx(fragment: Fragment) =
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.constraintId,fragment)
-            commit()
     }
 }

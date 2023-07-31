@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MinikAvtomobiliFragment">
+
+
+<RadioGroup
+android:id="@+id/radioGroupId"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.0"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/yanacaqNovuId"
+    android:gravity="start"
+    android:paddingStart="20dp">
+
+<RadioButton
+    android:id="@+id/benzin"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Benzin"
+    android:textColor="@color/black"
+    android:textSize="19sp"
+    android:textStyle="bold" />
+
+<RadioButton
+    android:id="@+id/dizel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="15dp"
+    android:text="Dizel"
+    android:textColor="@color/black"
+    android:textSize="19sp"
+    android:textStyle="bold" />
+
+
+
+    <RadioButton
+        android:id="@+id/hybrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="Hybrid"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        android:textStyle="bold" />
+
+</RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/deyerTextLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minikAvtomobiliToolbar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/deyerText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#EFEEEE"
+            android:gravity="top"
+            android:hint="Gömrük dəyəri"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+<com.google.android.material.textfield.TextInputLayout
+android:id="@+id/matorTextLayout"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:layout_marginStart="20dp"
+android:layout_marginTop="16dp"
+android:layout_marginEnd="20dp"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@id/deyerTextLayout">
+
+<com.google.android.material.textfield.TextInputEditText
+    android:id="@+id/matorText"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#EFEEEE"
+    android:gravity="top"
+    android:hint="Mühərrik həcmi (sm3)"
+    android:inputType="number"
+    android:textColor="@color/black"
+    android:textSize="19sp"
+    android:textStyle="bold" />
+
+
+</com.google.android.material.textfield.TextInputLayout>
+
+
+<EditText
+android:id="@+id/istehsalTarixiText"
+android:layout_width="0dp"
+android:layout_height="55dp"
+android:background="#EFEEEE"
+android:focusableInTouchMode="false"
+android:text="İstehsal Tarixi"
+android:ems="10"
+android:textColor="@color/black"
+android:textSize="19sp"
+android:layout_marginStart="20dp"
+android:layout_marginTop="16dp"
+android:layout_marginEnd="20dp"
+android:paddingStart="20dp"
+android:textStyle="bold"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.5"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@id/matorTextLayout"
+tools:ignore="TouchTargetSizeCheck">
+
+</EditText>
+
+<TextView
+android:id="@+id/yanacaqNovuId"
+android:layout_width="378dp"
+android:layout_height="wrap_content"
+android:layout_marginTop="36dp"
+android:background="@color/white"
+android:gravity="bottom|start"
+android:paddingStart="20dp"
+android:text="Nəqliyyat vasitəsinin yanacaq növü"
+android:textColor="#706E6E"
+android:textSize="19sp"
+android:textStyle="bold"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.515"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@id/istehsalTarixiText" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:gravity="center"
+        android:text="Kassa:  0.00 AZN"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hesablaId" />
+
+
+    <Button
+        android:id="@+id/hesablaId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Hesabla"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupId" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/minikAvtomobiliToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

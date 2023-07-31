@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment2">
+    <fragment
+        android:id="@+id/homeFragment2"
+        android:name="com.hasanshukurov.globroker.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment2_to_minikAvtomobiliFragment"
+            app:destination="@id/minikAvtomobiliFragment" />
+        <action
+            android:id="@+id/action_homeFragment2_to_yukAvtomobiliFragment"
+            app:destination="@id/yukAvtomobiliFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/minikAvtomobiliFragment"
+        android:name="com.hasanshukurov.globroker.MinikAvtomobiliFragment"
+        android:label="fragment_minik_avtomobil"
+        tools:layout="@layout/fragment_minik_avtomobil" />
+    <fragment
+        android:id="@+id/yukAvtomobiliFragment"
+        android:name="com.hasanshukurov.globroker.YukAvtomobiliFragment"
+        android:label="fragment_yuk_avtomobili"
+        tools:layout="@layout/fragment_yuk_avtomobili" />
+</navigation>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+
+
+
+
+    <ImageView
+        android:id="@+id/globrokerImageView"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:src="@drawable/img_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/minikAvtomobiliImageView"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="52dp"
+        android:src="@drawable/minik_avtomobili_asset"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ImageView
+        android:id="@+id/yukAvtomobiliImageView"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="36dp"
+        android:src="@drawable/yuk_avtomobili_asset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/calculatorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Minik Avtomobilləri Üçün"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/minikAvtomobiliImageView"
+        app:layout_constraintStart_toStartOf="@+id/minikAvtomobiliImageView"
+        app:layout_constraintTop_toBottomOf="@+id/minikAvtomobiliImageView" />
+
+    <TextView
+        android:id="@+id/qanunvericilikTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yük Avtomobilləri Üçün"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/yukAvtomobiliImageView"
+        app:layout_constraintStart_toStartOf="@+id/yukAvtomobiliImageView"
+        app:layout_constraintTop_toBottomOf="@+id/yukAvtomobiliImageView" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="45dp"
+        android:text="Avto Nəqliyyat Vasitələrinizin Gömrük Ödənişlərini Bizimlə Hesablayın"
+        android:textColor="#3F51B5"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:paddingEnd="30dp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/globrokerImageView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

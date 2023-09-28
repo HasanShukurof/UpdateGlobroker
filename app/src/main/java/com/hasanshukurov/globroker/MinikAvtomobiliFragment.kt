@@ -26,6 +26,10 @@ class MinikAvtomobiliFragment : Fragment() {
     var gunFerqi : Long = 0
     var deyerAzn : Double = 0.00
     var edv : Double = 0.00
+    var tarix: String? = null
+    var kohneUygunluq: Int = 60
+    var yeniUygunluq: Int = 30
+    var result: Double = 0.00
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +57,7 @@ class MinikAvtomobiliFragment : Fragment() {
 
 
         binding.istehsalTarixiText.setOnClickListener {
+
             val calendar = Calendar.getInstance()
 
             val il = calendar.get(Calendar.YEAR)
@@ -61,9 +66,7 @@ class MinikAvtomobiliFragment : Fragment() {
 
             val datePicker = DatePickerDialog(requireContext(),
                 DatePickerDialog.OnDateSetListener { datePicker, i, a, g ->
-
-                    binding.istehsalTarixiText.setText("$g.${a+1}.$i")
-
+                    tarix = binding.istehsalTarixiText.setText("$g.${a+1}.$i").toString()
                 },il,ay,gun)
 
             datePicker.setTitle("Tarix Seçin")
@@ -76,39 +79,65 @@ class MinikAvtomobiliFragment : Fragment() {
 
         binding.hesablaId.setOnClickListener {
 
-            if (mator == null) {
-                binding.textView.text = "Bosh xanalari doldurun"
-            }else if (deyerUsd == null) {
-                binding.textView.text = "Bosh xanalari doldurun"
-            }
+            deyerUsd = binding.deyerText.text.toString().toDoubleOrNull()
+            mator = binding.matorText.text.toString().toIntOrNull()
 
 
 
             if (binding.benzin.isChecked){
-                benzinFun()
+                if (deyerUsd == null){
+                    binding.textView.text = "Dəyəri Daxil Edin"
+                }else if (mator == null){
+                    binding.textView.text = "Mühərrik Həcmini Qeyd Edin"
+                }else if (tarix == null){
+                    binding.textView.text = "Tarixi Qeyd Edin"
+                }else{
+                    benzin()
+                }
             }
 
             if (binding.dizel.isChecked){
-                dizel()
+                if (deyerUsd == null){
+                    binding.textView.text = "Dəyəri Daxil Edin"
+                }else if (mator == null){
+                    binding.textView.text = "Mühərrik Həcmini Qeyd Edin"
+                }else if (tarix == null){
+                    binding.textView.text = "Tarixi Qeyd Edin"
+                }else{
+                    dizel()
+                }
+
             }
 
             if (binding.hybrid.isChecked){
-                hyibrid()
+                if (deyerUsd == null){
+                    binding.textView.text = "Dəyəri Daxil Edin"
+                }else if (mator == null){
+                    binding.textView.text = "Mühərrik Həcmini Qeyd Edin"
+                }else if (tarix == null){
+                    binding.textView.text = "Tarixi Qeyd Edin"
+                }else{
+                    hyibrid()
+                }
+            }
+
+            if (binding.elektrik.isChecked){
+                if (deyerUsd == null){
+                    binding.textView.text = "Dəyəri Daxil Edin"
+                }else if (mator == null || mator!! > 0){
+                    binding.textView.text = "Mühərrik Həcmini 0 Qeyd Edin"
+                }else if (tarix == null){
+                    binding.textView.text = "Tarixi Qeyd Edin"
+                }else{
+                    elektrik()
+                }
             }
         }
-
-
-
-
     }
 
-    fun benzinFun() {
+    fun benzin() {
 
         gunFerqi()
-
-        deyerUsd = binding.deyerText.text.toString().toDoubleOrNull()
-        mator = binding.matorText.text.toString().toIntOrNull()
-
 
         if (deyerUsd != null) {
             deyerAzn = deyerUsd!! * 1.70
@@ -201,18 +230,21 @@ class MinikAvtomobiliFragment : Fragment() {
 
 
 
-        var edv = ((deyerAzn + vesiqePulu + idxalRusumu + aksiz) * 18) / 100
+        edv = ((deyerAzn + idxalRusumu + aksiz) * 18) / 100
+
+
+        if (gunFerqi>=365){
+            result = yigim + kohneUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
+        }else{
+            result = yigim + yeniUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
+        }
 
 
 
+        val changeFormatResult = String.format("%.2f",result)
 
 
-            val result = yigim + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
-
-            val changeFormatResult = String.format("%.2f",result)
-
-
-            binding.textView.text = "Kassa: $changeFormatResult  AZN "
+        binding.textView.text = "Kassa: $changeFormatResult  AZN "
 
 
     }
@@ -315,14 +347,15 @@ class MinikAvtomobiliFragment : Fragment() {
         }
 
 
-
-        val edv = ((deyerAzn + vesiqePulu + idxalRusumu + aksiz) * 18) / 100
-
+        edv = ((deyerAzn + idxalRusumu + aksiz) * 18) / 100
 
 
+        if (gunFerqi >= 365){
+            result = yigim + kohneUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
+        }else{
+            result = yigim + yeniUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
+        }
 
-
-        val result = yigim + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
 
         val changeFormatResult = String.format("%.2f",result)
 
@@ -434,11 +467,19 @@ class MinikAvtomobiliFragment : Fragment() {
         if (mator!! <= 2500 && gunFerqi <= 1095) {
             edv = 0.00
         }else{
-            edv = ((deyerAzn + vesiqePulu + idxalRusumu + aksiz) * 18) / 100
+            edv = ((deyerAzn + idxalRusumu + aksiz) * 18) / 100
         }
 
 
-        val result = yigim + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
+
+        if (gunFerqi >= 365){
+            result = yigim + kohneUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
+        }else{
+            result = yigim + yeniUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
+        }
+
+
+
 
         val changeFormatResult = String.format("%.2f",result)
 
@@ -446,6 +487,62 @@ class MinikAvtomobiliFragment : Fragment() {
 
 
     }
+
+
+    fun elektrik() {
+
+        gunFerqi()
+
+        if (deyerUsd != null) {
+            deyerAzn = deyerUsd!! * 1.70
+        }
+
+
+
+        // --------- Gomruk Yigimi ----------
+
+        if (deyerAzn <= 1000) {
+            yigim = 15
+        }else if (deyerAzn <= 10000) {
+            yigim = 60
+        }else if (deyerAzn <= 50000) {
+            yigim = 120
+        }else if (deyerAzn <= 100000) {
+            yigim = 200
+        }else if (deyerAzn <= 500000) {
+            yigim = 300
+        }else if (deyerAzn <= 1000000) {
+            yigim = 600
+        }else {
+            yigim = 1000
+        }
+
+
+
+
+        // ------- Idxal rusumu -------
+
+        if(gunFerqi>=1095){
+            idxalRusumu = deyerAzn * 15/100
+        }else{
+            idxalRusumu = 0.00
+        }
+
+
+        result = yigim + vesiqePulu + idxalRusumu + xidmetHaqqi
+
+
+
+        val changeFormatResult = String.format("%.2f",result)
+
+
+        binding.textView.text = "Kassa: $changeFormatResult  AZN "
+
+
+    }
+
+
+
 
     private fun gunFerqi () {
 

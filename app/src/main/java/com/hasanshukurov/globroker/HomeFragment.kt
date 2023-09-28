@@ -32,9 +32,18 @@ class HomeFragment : Fragment() {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragment2ToMinikAvtomobiliFragment())
         }
 
+        binding.minikTextView.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragment2ToMinikAvtomobiliFragment())
+        }
+
         binding.yukAvtomobiliImageView.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragment2ToYukAvtomobiliFragment())
         }
+
+        binding.yukTextView.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragment2ToYukAvtomobiliFragment())
+        }
+
 
 
     }

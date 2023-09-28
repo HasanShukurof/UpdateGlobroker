@@ -10,10 +10,9 @@
     <RadioGroup
         android:id="@+id/radioGroupId"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:gravity="start"
         android:orientation="horizontal"
-        android:paddingStart="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,8 +25,10 @@
             android:layout_height="wrap_content"
             android:text="Dartıcı"
             android:textColor="@color/black"
-            android:textSize="19sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <RadioButton
             android:id="@+id/qoshqu"
@@ -36,8 +37,9 @@
             android:layout_marginStart="15dp"
             android:text="Qoşqu"
             android:textColor="@color/black"
-            android:textSize="19sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
 
 
         <RadioButton
@@ -47,8 +49,9 @@
             android:layout_marginStart="15dp"
             android:text="Yük"
             android:textColor="@color/black"
-            android:textSize="19sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
 
     </RadioGroup>
 
@@ -58,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/radioGroupId"
@@ -68,12 +71,12 @@
             android:id="@+id/deyerText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="#EFEEEE"
+            android:backgroundTint="@color/white"
             android:gravity="top"
-            android:hint="Gömrük dəyəri"
+            android:hint="Dəyər (USD)"
             android:inputType="number"
             android:textColor="@color/black"
-            android:textSize="19sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -84,7 +87,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,12 +97,12 @@
             android:id="@+id/matorText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="#EFEEEE"
+            android:backgroundTint="@color/white"
             android:gravity="top"
             android:hint="Mühərrik həcmi (sm3)"
             android:inputType="number"
             android:textColor="@color/black"
-            android:textSize="19sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
 
@@ -112,11 +115,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:background="@color/white"
-        android:gravity="bottom|start"
-        android:paddingStart="20dp"
+        android:gravity="start"
+        android:layout_marginStart="40dp"
         android:text="Nəqliyyat Vasitəsinin  Növü"
         android:textColor="#706E6E"
-        android:textSize="19sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
@@ -127,26 +130,53 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="28dp"
         android:gravity="center"
         android:text="Kassa:  0.00 AZN"
+        android:paddingTop="10dp"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hesablaId" />
 
+    <EditText
+        android:id="@+id/istehsalTarixiText"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="#1DFFFFFF"
+        android:focusableInTouchMode="false"
+        android:text="İstehsal Tarixini Qeyd Edin"
+        android:ems="10"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/matorTextLayout"
+        tools:ignore="TouchTargetSizeCheck">
+
+    </EditText>
+
+
     <Button
         android:id="@+id/hesablaId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="28dp"
         android:text="Hesabla"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matorTextLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/istehsalTarixiText" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/yukAvtomobiliToolbar"

@@ -1,5 +1,7 @@
 package com.hasanshukurov.globroker
 
+import android.app.DatePickerDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.hasanshukurov.globroker.databinding.FragmentMinikAvtomobilBinding
 import com.hasanshukurov.globroker.databinding.FragmentYukAvtomobiliBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class YukAvtomobiliFragment : Fragment() {
@@ -21,6 +25,11 @@ class YukAvtomobiliFragment : Fragment() {
     var xidmetHaqqi : Double = 35.40
     var deyerAzn : Double = 0.00
     var edv : Double = 0.00
+    var kohneUygunluq: Int = 60
+    var yeniUygunluq: Int = 30
+    var result: Double = 0.00
+    var tarix: String? = null
+    var gunFerqi : Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +50,28 @@ class YukAvtomobiliFragment : Fragment() {
         binding.yukAvtomobiliToolbar.title = "Gömrük Kalkulyatoru (Yük)"
 
 
+        binding.istehsalTarixiText.setOnClickListener {
+
+            val calendar = Calendar.getInstance()
+
+            val il = calendar.get(Calendar.YEAR)
+            val ay = calendar.get(Calendar.MONTH)
+            val gun = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePicker = DatePickerDialog(requireContext(),
+                DatePickerDialog.OnDateSetListener { datePicker, i, a, g ->
+                    tarix = binding.istehsalTarixiText.setText("$g.${a+1}.$i").toString()
+                },il,ay,gun)
+
+            datePicker.setTitle("Tarix Seçin")
+            datePicker.setButton(DialogInterface.BUTTON_POSITIVE,"Ok",datePicker)
+            datePicker.setButton(DialogInterface.BUTTON_NEGATIVE,"Cancel",datePicker)
+
+            datePicker.show()
+        }
+
+
+
 
         binding.hesablaId.setOnClickListener {
 
@@ -49,30 +80,33 @@ class YukAvtomobiliFragment : Fragment() {
 
 
             if (binding.dartici.isChecked){
-                if (mator == null) {
-                    binding.textView.text = "Mühərrik Həcmini Qeyd Edin"
-                }else if (deyerUsd == null) {
+                if (deyerUsd == null) {
                     binding.textView.text = "Dəyəri Daxil Edin"
+                }else if (mator == null) {
+                    binding.textView.text = "Mühərrik Həcmini Qeyd Edin"
                 }else{
                     dartici()
                 }
             }
 
             if (binding.qoshqu.isChecked){
-                if (mator != 0 && mator == null) {
-                    binding.textView.text = "Mühərrik Həcmini 0 Qeyd Edin"
-                }else if (deyerUsd == null) {
+
+                if (deyerUsd == null) {
                     binding.textView.text = "Dəyəri Daxil Edin"
+                }else if (mator == null || mator!! > 0) {
+                    binding.textView.text = "Mühərrik Həcmini   0   Qeyd Edin"
                 }else{
                     qoshqu()
                 }
             }
 
             if (binding.yuk.isChecked){
-                if (mator == null) {
+                if (deyerUsd == null) {
+                    binding.textView.text = "Dəyəri Daxil Edin "
+                }else if (mator == null) {
                     binding.textView.text = "Mühərrik Həcmini Qeyd Edin"
-                }else if (deyerUsd == null) {
-                    binding.textView.text = "Dəyəri Daxil Edin"
+                }else if(tarix == null){
+                    binding.textView.text = "Tarixi Qeyd Edin"
                 }else{
                     yuk()
                 }
@@ -116,13 +150,16 @@ class YukAvtomobiliFragment : Fragment() {
 
         //   EDV
 
-        val edv = ((deyerAzn + vesiqePulu ) * 18) / 100
+         edv = ((deyerAzn + vesiqePulu) * 18) / 100
 
 
+        if (gunFerqi >= 365){
+            result = yigim + kohneUygunluq + vesiqePulu + edv + xidmetHaqqi
+        }else{
+            result = yigim + yeniUygunluq + vesiqePulu + edv + xidmetHaqqi
+        }
 
 
-
-        val result = yigim + vesiqePulu + edv + xidmetHaqqi
 
         val changeFormatResult = String.format("%.2f",result)
 
@@ -173,7 +210,7 @@ class YukAvtomobiliFragment : Fragment() {
         //   EDV
 
         vesiqePulu = 25.00
-        val edv = ((deyerAzn + vesiqePulu + idxalRusumu ) * 18) / 100
+        val edv = ((deyerAzn + idxalRusumu ) * 18) / 100
 
 
 
@@ -222,20 +259,30 @@ class YukAvtomobiliFragment : Fragment() {
 
         // ------- Idxal rusumu -------
         if (mator != null) {
-            idxalRusumu = mator!! * 0.7 * 1.7
+            if (gunFerqi >= 365){
+                idxalRusumu = mator!! * 0.7 * 1.7
+            }else{
+                idxalRusumu = deyerAzn * 5/100
+            }
+
         }
 
 
 
         //   EDV
 
-        var edv = ((deyerAzn + vesiqePulu + idxalRusumu ) * 18) / 100
+        val edv = ((deyerAzn + idxalRusumu ) * 18) / 100
+
+
+        if (gunFerqi >= 365){
+            result = yigim + kohneUygunluq + vesiqePulu + idxalRusumu + edv + xidmetHaqqi
+        }else{
+            result = yigim + yeniUygunluq + vesiqePulu + idxalRusumu + edv + xidmetHaqqi
+        }
 
 
 
 
-
-        val result = yigim + vesiqePulu + idxalRusumu + edv + xidmetHaqqi
 
         val changeFormatResult = String.format("%.2f",result)
 
@@ -246,6 +293,17 @@ class YukAvtomobiliFragment : Fragment() {
 
     }
 
+    private fun gunFerqi () {
+
+        var toDay = Date()
+        var editDate = binding.istehsalTarixiText.text.toString()
+        var makeFormat = SimpleDateFormat("dd.MM.yyyy")
+        var tarix : Date = makeFormat.parse(editDate)
+
+
+        gunFerqi = (toDay.time - tarix.time) / 86400000
+
+    }
 
 }
 

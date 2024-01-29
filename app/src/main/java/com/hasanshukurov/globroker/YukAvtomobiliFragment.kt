@@ -3,10 +3,24 @@ package com.hasanshukurov.globroker
 import android.app.DatePickerDialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hasanshukurov.globroker.Constant.deyerAzn
+import com.hasanshukurov.globroker.Constant.deyerUsd
+import com.hasanshukurov.globroker.Constant.edv
+import com.hasanshukurov.globroker.Constant.idxalRusumu
+import com.hasanshukurov.globroker.Constant.kohneUygunluq
+import com.hasanshukurov.globroker.Constant.mator
+import com.hasanshukurov.globroker.Constant.result
+import com.hasanshukurov.globroker.Constant.tarix
+import com.hasanshukurov.globroker.Constant.vesiqePulu
+import com.hasanshukurov.globroker.Constant.vesiqePuluQoshqu
+import com.hasanshukurov.globroker.Constant.xidmetHaqqi
+import com.hasanshukurov.globroker.Constant.yeniUygunluq
+import com.hasanshukurov.globroker.Constant.yigim
 import com.hasanshukurov.globroker.databinding.FragmentMinikAvtomobilBinding
 import com.hasanshukurov.globroker.databinding.FragmentYukAvtomobiliBinding
 import java.text.SimpleDateFormat
@@ -17,19 +31,6 @@ class YukAvtomobiliFragment : Fragment() {
 
     private lateinit var binding: FragmentYukAvtomobiliBinding
 
-    var deyerUsd : Double? = null
-    var mator : Int? = null
-    var yigim : Int = 0
-    var idxalRusumu : Double = 0.00
-    var vesiqePulu : Double = 30.00
-    var xidmetHaqqi : Double = 35.40
-    var deyerAzn : Double = 0.00
-    var edv : Double = 0.00
-    var kohneUygunluq: Int = 60
-    var yeniUygunluq: Int = 30
-    var result: Double = 0.00
-    var tarix: String? = null
-    var gunFerqi : Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +48,7 @@ class YukAvtomobiliFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.yukAvtomobiliToolbar.title = "Gömrük Kalkulyatoru (Yük)"
+//        binding.yukAvtomobiliToolbar.title = "Gömrük Kalkulyatoru (Yük)"
 
 
         binding.istehsalTarixiText.setOnClickListener {
@@ -86,6 +87,9 @@ class YukAvtomobiliFragment : Fragment() {
                     binding.textView.text = "Mühərrik Həcmini Qeyd Edin"
                 }else{
                     dartici()
+                    println("Yigim: $yigim / Uygunluq: $kohneUygunluq / VesiqePulu: $vesiqePulu / EDV: $edv / xidmetHaqqi: $xidmetHaqqi")
+
+
                 }
             }
 
@@ -117,6 +121,8 @@ class YukAvtomobiliFragment : Fragment() {
     }
 
     fun dartici() {
+
+        gunFerqi()
 
         deyerUsd = binding.deyerText.text.toString().toDoubleOrNull()
         mator = binding.matorText.text.toString().toIntOrNull()
@@ -153,7 +159,7 @@ class YukAvtomobiliFragment : Fragment() {
          edv = ((deyerAzn + vesiqePulu) * 18) / 100
 
 
-        if (gunFerqi >= 365){
+        if (Constant.gunFerqi >= 365){
             result = yigim + kohneUygunluq + vesiqePulu + edv + xidmetHaqqi
         }else{
             result = yigim + yeniUygunluq + vesiqePulu + edv + xidmetHaqqi
@@ -169,6 +175,7 @@ class YukAvtomobiliFragment : Fragment() {
     }
 
     fun qoshqu() {
+
 
         deyerUsd = binding.deyerText.text.toString().toDoubleOrNull()
         mator = binding.matorText.text.toString().toIntOrNull()
@@ -209,14 +216,13 @@ class YukAvtomobiliFragment : Fragment() {
 
         //   EDV
 
-        vesiqePulu = 25.00
-        val edv = ((deyerAzn + idxalRusumu ) * 18) / 100
+        edv = ((deyerAzn + idxalRusumu + vesiqePuluQoshqu) * 18) / 100
 
 
 
 
 
-        val result = yigim + vesiqePulu + idxalRusumu + edv + xidmetHaqqi
+        result = yigim + vesiqePuluQoshqu + idxalRusumu + edv + xidmetHaqqi
 
         val changeFormatResult = String.format("%.2f",result)
 
@@ -227,6 +233,8 @@ class YukAvtomobiliFragment : Fragment() {
     }
 
     fun yuk() {
+
+        gunFerqi()
 
         deyerUsd = binding.deyerText.text.toString().toDoubleOrNull()
         mator = binding.matorText.text.toString().toIntOrNull()
@@ -259,7 +267,7 @@ class YukAvtomobiliFragment : Fragment() {
 
         // ------- Idxal rusumu -------
         if (mator != null) {
-            if (gunFerqi >= 365){
+            if (Constant.gunFerqi >= 365){
                 idxalRusumu = mator!! * 0.7 * 1.7
             }else{
                 idxalRusumu = deyerAzn * 5/100
@@ -271,10 +279,10 @@ class YukAvtomobiliFragment : Fragment() {
 
         //   EDV
 
-        val edv = ((deyerAzn + idxalRusumu ) * 18) / 100
+        edv = ((deyerAzn + idxalRusumu + vesiqePulu) * 18) / 100
 
 
-        if (gunFerqi >= 365){
+        if (Constant.gunFerqi >= 365){
             result = yigim + kohneUygunluq + vesiqePulu + idxalRusumu + edv + xidmetHaqqi
         }else{
             result = yigim + yeniUygunluq + vesiqePulu + idxalRusumu + edv + xidmetHaqqi
@@ -301,7 +309,7 @@ class YukAvtomobiliFragment : Fragment() {
         var tarix : Date = makeFormat.parse(editDate)
 
 
-        gunFerqi = (toDay.time - tarix.time) / 86400000
+        Constant.gunFerqi = (toDay.time - tarix.time) / 86400000
 
     }
 

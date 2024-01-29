@@ -4,74 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/white_bacground"
     tools:context=".HomeFragment">
 
-
-    <ImageView
-        android:id="@+id/globrokerImageView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:src="@drawable/yeni_logo"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:minHeight="655dp"
+        tools:ignore="SpeakableTextPresentCheck">
 
-    <ImageView
-        android:id="@+id/minikAvtomobiliImageView"
-        android:layout_width="199dp"
-        android:layout_height="199dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="92dp"
-        android:src="@drawable/minik_logo_yeni"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/yukAvtomobiliImageView"
-        android:layout_width="199dp"
-        android:layout_height="199dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="5dp"
-        android:src="@drawable/yuk_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            <ImageView
+                android:id="@+id/minikAvtomobiliImageView"
+                android:layout_width="159dp"
+                android:layout_height="159dp"
+                android:layout_marginTop="140dp"
+                android:src="@drawable/minik_avtomobili_image"
+                app:layout_constraintEnd_toStartOf="@+id/yukAvtomobiliImageView"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-    <TextView
-        android:id="@+id/minikTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Minik Avtomobilləri"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/minikAvtomobiliImageView"
-        app:layout_constraintStart_toStartOf="@+id/minikAvtomobiliImageView"
-        app:layout_constraintTop_toBottomOf="@+id/minikAvtomobiliImageView" />
 
-    <TextView
-        android:id="@+id/yukTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Yük Avtomobilləri"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/yukAvtomobiliImageView"
-        app:layout_constraintStart_toStartOf="@+id/yukAvtomobiliImageView"
-        app:layout_constraintTop_toBottomOf="@+id/yukAvtomobiliImageView" />
+            <TextView
+                android:id="@+id/minikTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/homeMinik"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="@+id/minikAvtomobiliImageView"
+                app:layout_constraintStart_toStartOf="@+id/minikAvtomobiliImageView"
+                app:layout_constraintTop_toBottomOf="@+id/minikAvtomobiliImageView" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:paddingEnd="30dp"
-        android:text="Avtomobilinizin Gömrük Ödənişlərini Bizimlə Hesablayın"
-        android:textAlignment="center"
-        android:textColor="#040303"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/globrokerImageView" />
+            <ImageView
+                android:id="@+id/yukAvtomobiliImageView"
+                android:layout_width="159dp"
+                android:layout_height="159dp"
+                android:layout_marginTop="140dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/yuk_avtomobili_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo" />
 
+            <TextView
+                android:id="@+id/yukTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/homeYuk"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:paddingStart="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/yukAvtomobiliImageView"
+                app:layout_constraintStart_toStartOf="@+id/yukAvtomobiliImageView"
+                app:layout_constraintTop_toBottomOf="@+id/yukAvtomobiliImageView" />
+
+
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_margin="30dp"
+                android:src="@drawable/logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

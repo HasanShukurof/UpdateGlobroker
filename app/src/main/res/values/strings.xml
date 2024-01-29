@@ -2,4 +2,15 @@
     <string name="app_name">GloBroker</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="homeText">Avtomobilinizin Gömrük Ödənişlərini Bizimlə Hesablayın</string>
+    <string name="homeMinik">Minik Avtomobili</string>
+    <string name="homeYuk">Yük Avtomobili</string>
+    <string name="usd">Dəyər ($)</string>
+    <string name="sm3">Mühərrik (sm3)</string>
+    <string name="date">İstehsal Tarixi</string>
+    <string name="result">Kassa:  0.00 AZN</string>
+    <string name="nvTipi">NV-nin növü</string>
+    <string name="muherrik_novu">Mühərrik Növü</string>
+
 </resources>

@@ -10,7 +10,9 @@ import com.hasanshukurov.globroker.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
+ //   private lateinit var binding: FragmentHomeBinding
+
+    private var binding: FragmentHomeBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,25 +24,28 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
-        return binding.root
+        return binding!!.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.minikAvtomobiliImageView.setOnClickListener {
+
+
+        binding!!.minikAvtomobiliImageView.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragment2ToMinikAvtomobiliFragment())
         }
 
-        binding.minikTextView.setOnClickListener {
+        binding!!.minikTextView.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragment2ToMinikAvtomobiliFragment())
         }
 
-        binding.yukAvtomobiliImageView.setOnClickListener {
+        binding!!.yukAvtomobiliImageView.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragment2ToYukAvtomobiliFragment())
         }
 
-        binding.yukTextView.setOnClickListener {
+        binding!!.yukTextView.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragment2ToYukAvtomobiliFragment())
         }
 
@@ -48,5 +53,9 @@ class HomeFragment : Fragment() {
 
     }
 
+    override fun onDestroy() {
+        binding = null
+        super.onDestroy()
+    }
 
 }

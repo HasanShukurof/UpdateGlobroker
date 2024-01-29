@@ -11,10 +11,14 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment2_to_minikAvtomobiliFragment"
-            app:destination="@id/minikAvtomobiliFragment" />
+            app:destination="@id/minikAvtomobiliFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/slide_in_left" />
         <action
             android:id="@+id/action_homeFragment2_to_yukAvtomobiliFragment"
-            app:destination="@id/yukAvtomobiliFragment" />
+            app:destination="@id/yukAvtomobiliFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/minikAvtomobiliFragment"

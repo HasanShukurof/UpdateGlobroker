@@ -13,10 +13,12 @@ import com.hasanshukurov.globroker.Constant.deyerAzn
 import com.hasanshukurov.globroker.Constant.deyerUsd
 import com.hasanshukurov.globroker.Constant.edv
 import com.hasanshukurov.globroker.Constant.idxalRusumu
+import com.hasanshukurov.globroker.Constant.ilFerqi
 import com.hasanshukurov.globroker.Constant.kohneUygunluq
 import com.hasanshukurov.globroker.Constant.mator
 import com.hasanshukurov.globroker.Constant.result
 import com.hasanshukurov.globroker.Constant.tarix
+import com.hasanshukurov.globroker.Constant.utilizasiya
 import com.hasanshukurov.globroker.Constant.vesiqePulu
 import com.hasanshukurov.globroker.Constant.xidmetHaqqi
 import com.hasanshukurov.globroker.Constant.yeniUygunluq
@@ -70,6 +72,7 @@ class MinikAvtomobiliFragment : Fragment() {
 
             datePicker.show()
         }
+
 
 
         binding!!.hesablaId.setOnClickListener {
@@ -133,6 +136,7 @@ class MinikAvtomobiliFragment : Fragment() {
     fun benzin() {
 
         gunFerqi()
+        println("IL FERQI: $ilFerqi")
 
         if (deyerUsd != null) {
             deyerAzn = deyerUsd!! * 1.70
@@ -228,10 +232,19 @@ class MinikAvtomobiliFragment : Fragment() {
         edv = ((deyerAzn + idxalRusumu + aksiz + vesiqePulu) * 18) / 100
 
 
+        // Utilizasiya
+        if (ilFerqi >= 4 && ilFerqi < 7) {
+            utilizasiya = 400
+        } else if (ilFerqi >= 7) {
+            utilizasiya = 700
+        } else {
+            utilizasiya = 0
+        }
+
         if (Constant.gunFerqi >= 365){
-            result = yigim + kohneUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
+            result = yigim + kohneUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi + utilizasiya
         }else{
-            result = yigim + yeniUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
+            result = yigim + yeniUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi + utilizasiya
         }
 
 
@@ -341,10 +354,22 @@ class MinikAvtomobiliFragment : Fragment() {
         edv = ((deyerAzn + idxalRusumu + aksiz + vesiqePulu) * 18) / 100
 
 
+
+        // Utilizasiya
+        if (ilFerqi >= 4 && ilFerqi < 7) {
+            utilizasiya = 400
+        } else if (ilFerqi >= 7) {
+            utilizasiya = 700
+        } else {
+            utilizasiya = 0
+        }
+
+
+
         if (Constant.gunFerqi >= 365){
-            result = yigim + kohneUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
+            result = yigim + kohneUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi + utilizasiya
         }else{
-            result = yigim + yeniUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
+            result = yigim + yeniUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi + utilizasiya
         }
 
 
@@ -459,11 +484,20 @@ class MinikAvtomobiliFragment : Fragment() {
         }
 
 
+        // Utilizasiya
+        if (ilFerqi >= 4 && ilFerqi < 7) {
+            utilizasiya = 400
+        } else if (ilFerqi >= 7) {
+            utilizasiya = 700
+        } else {
+            utilizasiya = 0
+        }
+
 
         if (Constant.gunFerqi >= 365){
-            result = yigim + kohneUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
+            result = yigim + kohneUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi + utilizasiya
         }else{
-            result = yigim + yeniUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi
+            result = yigim + yeniUygunluq + vesiqePulu + idxalRusumu + aksiz + edv + xidmetHaqqi + utilizasiya
         }
 
 
@@ -517,7 +551,16 @@ class MinikAvtomobiliFragment : Fragment() {
         }
 
 
-        result = yigim + vesiqePulu + idxalRusumu + xidmetHaqqi
+        // Utilizasiya
+        if (ilFerqi >= 4 && ilFerqi < 7) {
+            utilizasiya = 400
+        } else if (ilFerqi >= 7) {
+            utilizasiya = 700
+        } else {
+            utilizasiya = 0
+        }
+
+        result = yigim + vesiqePulu + idxalRusumu + xidmetHaqqi + utilizasiya
 
         val changeFormatResult = String.format("%.2f",result)
 
@@ -538,6 +581,7 @@ class MinikAvtomobiliFragment : Fragment() {
         var tarix : Date = makeFormat.parse(editDate)
 
 
+        ilFerqi = toDay.year - tarix.year
         Constant.gunFerqi = (toDay.time - tarix.time) / 86400000
 
     }

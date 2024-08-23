@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.hasanshukurov.globroker.Constant.aksiz
 import com.hasanshukurov.globroker.Constant.deyerAzn
 import com.hasanshukurov.globroker.Constant.deyerUsd
@@ -48,6 +49,7 @@ class MinikAvtomobiliFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.purple_500)
 
 
   //      binding!!.minikAvtomobiliToolbar.title = "Gömrük Kalkulyatoru (Minik)"

@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.UpdateAvailability
 import com.google.android.play.core.install.model.UpdateAvailability.UPDATE_AVAILABLE
 import com.hasanshukurov.globroker.databinding.ActivityMainBinding
 import java.util.zip.Inflater
@@ -38,6 +39,21 @@ class MainActivity : AppCompatActivity() {
                 // Start the update process
                 appUpdateManager.startUpdateFlowForResult(
                     appUpdateInfo,
+                    AppUpdateType.IMMEDIATE,
+                    this,
+                    UPDATE_REQUEST_CODE
+                )
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        appUpdateManager.appUpdateInfo.addOnSuccessListener { info ->
+            if (info.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS && info.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)){
+                appUpdateManager.startUpdateFlowForResult(
+                    info,
                     AppUpdateType.IMMEDIATE,
                     this,
                     UPDATE_REQUEST_CODE

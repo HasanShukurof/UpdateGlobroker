@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.hasanshukurov.globroker.Constant.aksiz
 import com.hasanshukurov.globroker.Constant.deyerAzn
 import com.hasanshukurov.globroker.Constant.deyerUsd
@@ -50,7 +51,9 @@ class MinikAvtomobiliFragment : Fragment() {
 
 
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.purple_500)
-
+        binding!!.backButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
   //      binding!!.minikAvtomobiliToolbar.title = "Gömrük Kalkulyatoru (Minik)"
 

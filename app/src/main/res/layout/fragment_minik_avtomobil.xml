@@ -7,217 +7,227 @@
     android:background="@drawable/white_bacground"
     tools:context=".YukAvtomobiliFragment">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-    <RadioGroup
-        android:id="@+id/radioGroupId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:background="@drawable/textview_cercive"
-        android:gravity="start"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nvTipiTextView">
-
-        <RadioButton
-            android:id="@+id/benzin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Benzin"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <RadioButton
-            android:id="@+id/dizel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dizel"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-        <RadioButton
-            android:id="@+id/hybrid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hybrid"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck" />
+            <RadioGroup
+                android:id="@+id/radioGroupId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/textview_cercive"
+                android:gravity="start"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nvTipiTextView">
+
+                <RadioButton
+                    android:id="@+id/benzin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Benzin"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/dizel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dizel"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
 
 
-        <RadioButton
-            android:id="@+id/elektrik"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Elektrik"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck" />
-
-    </RadioGroup>
-
-    <EditText
-        android:id="@+id/istehsalTarixiText"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:background="@drawable/textview_cercive"
-        android:ems="10"
-        android:focusableInTouchMode="false"
-        android:paddingStart="20dp"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/radioGroupId"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/radioGroupId"
-        app:layout_constraintTop_toBottomOf="@+id/nvDateTextView"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
-
-    </EditText>
-
-    <EditText
-        android:id="@+id/deyerText"
-        android:layout_width="140dp"
-        android:layout_height="45dp"
-        android:background="@drawable/textview_cercive"
-        android:inputType="number"
-        android:paddingStart="20dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/nvDeyerTextView"
-        app:layout_constraintTop_toBottomOf="@+id/nvDeyerTextView"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-    <EditText
-        android:id="@+id/matorText"
-        android:layout_width="140dp"
-        android:layout_height="45dp"
-        android:background="@drawable/textview_cercive"
-        android:inputType="number"
-        android:paddingStart="20dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/istehsalTarixiText"
-        app:layout_constraintTop_toBottomOf="@+id/nvMatorTextView"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/textview_cercive"
-        android:textAlignment="center"
-        android:layout_marginTop="40dp"
-        android:hint="@string/result"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hesablaId" />
+                <RadioButton
+                    android:id="@+id/hybrid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hybrid"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/hesablaId"
-        style="@android:style/Widget.Button"
-        android:layout_width="255dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_click_effect"
-        android:text="HESABLA"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/matorText"
-        app:layout_constraintStart_toStartOf="@+id/deyerText"
-        app:layout_constraintTop_toBottomOf="@+id/matorText"
-        tools:ignore="TextContrastCheck" />
+                <RadioButton
+                    android:id="@+id/elektrik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Elektrik"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="161dp"
-        android:src="@drawable/top_background"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            </RadioGroup>
 
-    <ImageView
-        android:id="@+id/yuk_cercive_image"
-        android:layout_width="210dp"
-        android:layout_height="88dp"
-        android:src="@drawable/minik_avtomobili_image"
-        android:background="@drawable/cercive_drawable"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            <EditText
+                android:id="@+id/istehsalTarixiText"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:background="@drawable/textview_cercive"
+                android:ems="10"
+                android:focusableInTouchMode="false"
+                android:paddingStart="20dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/radioGroupId"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/radioGroupId"
+                app:layout_constraintTop_toBottomOf="@+id/nvDateTextView"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
 
-    <TextView
-        android:id="@+id/nvTipiTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:paddingStart="5dp"
-        android:text="@string/muherrik_novu"
-        app:layout_constraintStart_toStartOf="@+id/radioGroupId"
-        app:layout_constraintTop_toBottomOf="@+id/yuk_cercive_image" />
+            </EditText>
 
-    <TextView
-        android:id="@+id/nvDateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="5dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/date"
-        app:layout_constraintStart_toStartOf="@+id/radioGroupId"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupId" />
+            <EditText
+                android:id="@+id/deyerText"
+                android:layout_width="140dp"
+                android:layout_height="45dp"
+                android:background="@drawable/textview_cercive"
+                android:inputType="number"
+                android:paddingStart="20dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/nvDeyerTextView"
+                app:layout_constraintTop_toBottomOf="@+id/nvDeyerTextView"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/matorText"
+                android:layout_width="140dp"
+                android:layout_height="45dp"
+                android:background="@drawable/textview_cercive"
+                android:inputType="number"
+                android:paddingStart="20dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/istehsalTarixiText"
+                app:layout_constraintTop_toBottomOf="@+id/nvMatorTextView"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/textview_cercive"
+                android:hint="@string/result"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hesablaId" />
 
 
-    <TextView
-        android:id="@+id/nvDeyerTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="5dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/usd"
-        app:layout_constraintStart_toStartOf="@+id/istehsalTarixiText"
-        app:layout_constraintTop_toBottomOf="@+id/istehsalTarixiText" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/hesablaId"
+                style="@android:style/Widget.Button"
+                android:layout_width="255dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_click_effect"
+                android:text="HESABLA"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/matorText"
+                app:layout_constraintStart_toStartOf="@+id/deyerText"
+                app:layout_constraintTop_toBottomOf="@+id/matorText"
+                tools:ignore="TextContrastCheck" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="161dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/top_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/yuk_cercive_image"
+                android:layout_width="210dp"
+                android:layout_height="88dp"
+                android:background="@drawable/cercive_drawable"
+                android:src="@drawable/minik_avtomobili_image"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/nvTipiTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:paddingStart="5dp"
+                android:text="@string/muherrik_novu"
+                app:layout_constraintStart_toStartOf="@+id/radioGroupId"
+                app:layout_constraintTop_toBottomOf="@+id/yuk_cercive_image" />
+
+            <TextView
+                android:id="@+id/nvDateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="5dp"
+                android:text="@string/date"
+                app:layout_constraintStart_toStartOf="@+id/radioGroupId"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroupId" />
 
 
-    <TextView
-        android:id="@+id/nvMatorTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingStart="10dp"
-        android:text="@string/sm3"
-        app:layout_constraintStart_toStartOf="@+id/matorText"
-        app:layout_constraintTop_toBottomOf="@+id/istehsalTarixiText" />
+            <TextView
+                android:id="@+id/nvDeyerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="5dp"
+                android:text="@string/usd"
+                app:layout_constraintStart_toStartOf="@+id/istehsalTarixiText"
+                app:layout_constraintTop_toBottomOf="@+id/istehsalTarixiText" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+
+            <TextView
+                android:id="@+id/nvMatorTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"
+                android:text="@string/sm3"
+                app:layout_constraintStart_toStartOf="@+id/matorText"
+                app:layout_constraintTop_toBottomOf="@+id/istehsalTarixiText" />
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/back_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

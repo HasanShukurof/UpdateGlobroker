@@ -85,6 +85,8 @@ class YukAvtomobiliFragment : Fragment() {
 
             deyerUsd = binding.deyerText.text.toString().toDoubleOrNull()
             mator = binding.matorText.text.toString().toIntOrNull()
+            val istTartix = binding!!.istehsalTarixiText.text.toString()
+
 
 
             if (binding.dartici.isChecked){
@@ -92,6 +94,8 @@ class YukAvtomobiliFragment : Fragment() {
                     binding.textView.text = "Dəyəri Daxil Edin"
                 }else if (mator == null) {
                     binding.textView.text = "Mühərrik Həcmini Qeyd Edin"
+                }else if(istTartix.isEmpty()){
+                    binding.textView.text = "Tarixi Qeyd Edin"
                 }else{
                     dartici()
                     println("Yigim: $yigim / Uygunluq: $kohneUygunluq / VesiqePulu: $vesiqePulu / EDV: $edv / xidmetHaqqi: $xidmetHaqqi")
@@ -106,6 +110,8 @@ class YukAvtomobiliFragment : Fragment() {
                     binding.textView.text = "Dəyəri Daxil Edin"
                 }else if (mator == null || mator!! > 0) {
                     binding.textView.text = "Mühərrik Həcmini   0   Qeyd Edin"
+                }else if(istTartix.isEmpty()){
+                    binding.textView.text = "Tarixi Qeyd Edin"
                 }else{
                     qoshqu()
                 }
@@ -116,7 +122,7 @@ class YukAvtomobiliFragment : Fragment() {
                     binding.textView.text = "Dəyəri Daxil Edin "
                 }else if (mator == null) {
                     binding.textView.text = "Mühərrik Həcmini Qeyd Edin"
-                }else if(tarix == null){
+                }else if(istTartix.isEmpty()){
                     binding.textView.text = "Tarixi Qeyd Edin"
                 }else{
                     yuk()
